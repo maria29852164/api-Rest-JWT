@@ -1,8 +1,8 @@
 import User from '../models/user.model'
 export const UserController={
     singUp:async (req,res)=>{
-        const {username,email,password} =req.body
-        const user=await User.create({username,email,password})
+        const {username,email,password,roles} =req.body
+        const user=await User.create({username,email,password:User.encriptyPassword(password)})
         return res.json({
             code:200,
             status:"successfully",
@@ -15,6 +15,6 @@ export const UserController={
         if(!user){
             return 'use not found'
         }
-        return user.role
+        return user.roles
     }
 }
