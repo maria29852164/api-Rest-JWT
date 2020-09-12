@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:build": " babel src --out-dir dist",
-    "start:dev": "nodemon src/index.js --exec babel-node"
+    "start:dev": "nodemon src/index.js --exec babel-node",
+    "start:build": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
