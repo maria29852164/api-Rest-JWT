@@ -1,3 +1,2 @@
 import app from './server'
-
-app.listen(3000,()=>console.log('server at running'))
+app.listen(app.get('PORT'),()=>console.log('server at running: '+app.get('PORT')))
