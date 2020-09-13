@@ -5,16 +5,14 @@ import secret from '../config'
 import Role from '../models/role.model'
 export const UserController={
     verifiedRole:async (roles)=>{
-        if(roles.length<=0){
-
-            const roleUnique=await Role.find({name:'user'})
-            return [roleUnique._id]
-
+        if(roles){
+            const rolesFound=await Role.find({name:{$in:roles}})
+            return rolesFound.map(role=>role._id)
         }
-        const rolesFound=await Role.find({name:{$in:roles}})
-        return rolesFound.map(role=>role._id)
-
-
+        else{
+            const roleUnique=await Role.findOne({name:"user"})
+            return [roleUnique._id]
+        }
 
     },
     generateToken:async (user)=>{
