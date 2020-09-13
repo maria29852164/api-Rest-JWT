@@ -1,14 +1,20 @@
 import User from '../models/user.model'
 import jwt from 'jsonwebtoken'
 import secret from '../config'
+
 import Role from '../models/role.model'
 export const UserController={
-    verifiedRole:async (roles=[])=>{
-        if(roles.length>0){
-            const rolesFound=await Role.find({name:{$in :roles}})
-            return rolesFound
+    verifiedRole:async (roles)=>{
+        if(roles.length<=0){
+
+            const roleUnique=await Role.find({name:'user'})
+            return [roleUnique._id]
+
         }
-        return ['user']
+        const rolesFound=await Role.find({name:{$in:roles}})
+        return rolesFound.map(role=>role._id)
+
+
 
     },
     generateToken:async (user)=>{
@@ -18,13 +24,14 @@ export const UserController={
     },
     singUp:async (req,res)=>{
         const {username,email,password,roles} = req.body
-        const rolesVerified= await UserController.verifiedRole(roles.replace(/['"]+/g, ''))
+
+       const rolesVerified= await UserController.verifiedRole(roles)
         const user=new User({username,email,password:await User.encriptyPassword(password),
-            roles:rolesVerified.map(role=>role._id)
+            roles:rolesVerified
         })
         const saveUser=await user.save()
         const token=await UserController.generateToken(saveUser)
-        return res.status(201).json({token,username,user:saveUser})
+        return res.status(201).json({token,user:saveUser})
 
 
     },
