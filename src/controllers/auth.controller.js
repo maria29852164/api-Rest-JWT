@@ -16,9 +16,8 @@ export const UserController={
 
     },
     generateToken:async (user)=>{
-        const token=await jwt.sign({id:user._id},secret.secret,{expiresIn:86400})
+        const token=await jwt.sign({id:user._id,roles:user.roles.map(role=>role.name)},secret.secret,{expiresIn:86400})
         return token
-
     },
     singUp:async (req,res)=>{
         const {username,email,password,roles} = req.body
@@ -28,8 +27,7 @@ export const UserController={
             roles:rolesVerified
         })
         const saveUser=await User.create(user)
-        const token=await UserController.generateToken(saveUser)
-        return res.status(201).json({token,user:saveUser})
+        return res.status(201).json({user:saveUser})
 
 
     },
@@ -38,12 +36,14 @@ export const UserController={
         const {username,password}=req.body
 
 
-            const user=await User.findOne({username})
+            const user=await User.findOne({username}).populate('roles')
             if(user){
-                //res.json(user)
 
                 const userComparePassword=await User.comparePassword(password,user.password)
-                return (userComparePassword)?res.status(200).json(user.roles):res.status(404).json(`password is incorrect`)
+                const token=await UserController.generateToken(user)
+
+               // const rolesUser=user.roles.map(role=>role.name)
+                return (userComparePassword)?res.status(200).json(token):res.status(404).json(`password is incorrect`)
 
             }else{
                 res.status(404).json(`user not found with username: ${username}`)
