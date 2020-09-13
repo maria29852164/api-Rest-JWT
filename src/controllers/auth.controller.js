@@ -29,7 +29,7 @@ export const UserController={
         const user=new User({username,email,password:await User.encriptyPassword(password),
             roles:rolesVerified
         })
-        const saveUser=await user.save()
+        const saveUser=await User.create(user)
         const token=await UserController.generateToken(saveUser)
         return res.status(201).json({token,user:saveUser})
 
@@ -38,10 +38,20 @@ export const UserController={
 
     sinIn:async (req,res)=>{
         const {username,password}=req.body
-        const user=await User.findOne({username,password})
-        if(!user){
-            return 'use not found'
-        }
-        return user.roles
+
+
+            const user=await User.find({username})
+            if(user){
+                res.json(username,password,user)
+
+            }
+
+
+            //const userComparePassword=await User.comparePassword(user.password,password)
+            //return (userComparePassword)?res.status(200).json(user.roles):res.status(404).json(`password is incorrect`)
+
+
+
+
     }
 }

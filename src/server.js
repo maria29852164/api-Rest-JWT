@@ -4,9 +4,19 @@ import morgan from 'morgan'
 import router from "./routes/products.route";
 import routerAuth from './routes/auth.route'
 import './database'
+import Role from './models/role.model'
 import {createRolesDefault} from './libs/setup'
 const app =express()
-createRolesDefault()
+
+const existRoles=async ()=>{
+    const roles=await Role.exists()
+
+    if(roles)return
+    createRolesDefault()
+
+}
+existRoles()
+
 
 const port = process.env['PORT'] || 4000
 app.set('PORT',port)
