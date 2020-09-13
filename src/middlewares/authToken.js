@@ -1,25 +1,29 @@
 import jwt from 'jsonwebtoken'
 import config from '../config'
-export const verifiedToken=(req,res,next)=>{
+export const verifiedToken=async (req,res,next)=>{
     const token=req.headers['x-access-token']
     if(!token)return res.status(401).json({message:"no token provided"})
-    const verifiedToken=jwt.verify(token,config.secret)
+    const verifiedToken=await jwt.verify(token,config.secret)
     req.roles=verifiedToken.roles
     next()
 
 }
 export const isAdmin=(req,res,next)=>{
-    req.roles.map(role=>{
-        return (role.name==='admin')?next():res.json({message:"user not has privilegies"})
-    })
+    const admin=req.roles.filter(role=>role.name==='admin')
+   if(admin[0]!=''){
+       next()
+   }else{
+       res.json({message:"user not has privileges"})
+   }
 }
 export const isModerator=(req,res,next)=>{
-    req.roles.map(role=>{
-        return (role.name==='moderator')?next():res.json({message:"user not has privilegies"})
-    })
+    const moderator=req.roles.filter(role=>role.name==='admin')
+    if(moderator[0]!=''){
+        next()
+    }else{
+        res.json({message:"user not has privileges"})
+    }
 }
 export const isDefault=(req,res,next)=>{
-    req.roles.map(role=>{
-        return (role.name==='user')?next():res.json({message:"user not has privilegies"})
-    })
+    next()
 }
