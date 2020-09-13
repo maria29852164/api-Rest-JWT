@@ -16,7 +16,8 @@ export const UserController={
 
     },
     generateToken:async (user)=>{
-        const token=await jwt.sign({id:user._id,roles:user.roles.map(role=>role.name)},secret.secret,{expiresIn:86400})
+        const rolesUser=user.roles.map(role=>role.name)
+        const token=await jwt.sign({id:user._id,roles:rolesUser},secret.secret,{expiresIn:86400})
         return token
     },
     singUp:async (req,res)=>{
