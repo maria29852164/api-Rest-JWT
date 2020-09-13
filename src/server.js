@@ -4,15 +4,19 @@ import morgan from 'morgan'
 import router from "./routes/products.route";
 import routerAuth from './routes/auth.route'
 import './database'
+import {createRolesDefault} from './libs/setup'
 const app =express()
+createRolesDefault()
 
-
-const port = process.env['PORT'] || 3000
+const port = process.env['PORT'] || 4000
 app.set('PORT',port)
-
+app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+
+
+
 app.use(morgan('dev'))
-app.use(express.json())
+
 app.use('/products',router)
 app.use('/auth',routerAuth)
 

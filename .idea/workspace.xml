@@ -11,11 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8586ead7-9d7e-48ba-9622-1dac608ed681" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/libs/setup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/product.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/product.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/role.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/role.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/auth.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +59,9 @@
       <updated>1599856476209</updated>
       <workItem from="1599856477536" duration="3386000" />
       <workItem from="1599873798378" duration="7168000" />
-      <workItem from="1599934218516" duration="9032000" />
+      <workItem from="1599934218516" duration="10016000" />
+      <workItem from="1599950959712" duration="1619000" />
+      <workItem from="1599964076030" duration="4797000" />
     </task>
     <servers />
   </component>
@@ -74,6 +78,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="435" y="168" width="490" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599874097991">
@@ -84,6 +89,10 @@
       <screen x="0" y="0" width="1366" height="731" />
     </state>
     <state x="179" y="1" key="SettingsEditor/0.0.1366.731@0.0.1366.731" timestamp="1599874270845" />
+    <state x="345" y="160" key="run.anything.popup" timestamp="1599965868287">
+      <screen x="0" y="0" width="1366" height="731" />
+    </state>
+    <state x="345" y="160" key="run.anything.popup/0.0.1366.731@0.0.1366.731" timestamp="1599965868287" />
     <state x="346" y="52" key="search.everywhere.popup" timestamp="1599857249663">
       <screen x="0" y="0" width="1366" height="731" />
     </state>

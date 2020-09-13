@@ -4,7 +4,7 @@ export const ProductController={
         const productCreate={
             name:req.body.name,
             description:req.body.description,
-            price:parseFloat(req.body.price),
+            price:req.body.price,
             category:req.body.category,
             imgUrl:req.body.imgUrl
         }

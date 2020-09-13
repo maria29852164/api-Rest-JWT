@@ -23,8 +23,8 @@ const UserSchema=new Schema({
 })
 
 UserSchema.statics.encriptyPassword=async (password)=>{
-    const salt=bcrypt.genSalt(10)
+    const salt=await bcrypt.genSalt(10)
     return bcrypt.hash(password,salt)
 }
-UserSchema.statics.comparePassword=async (password,recivedPassword)=>bcrypt.compare(password,recivedPassword)
+UserSchema.statics.comparePassword=async (password,recivedPassword)=>await bcrypt.compare(password,recivedPassword)
 export default model('User',UserSchema)

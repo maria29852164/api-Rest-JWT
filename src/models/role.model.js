@@ -3,7 +3,6 @@ const RoleSchema=new Schema({
     name:{
         type:String
     }
-
 },{
     versionKey:false
 })
