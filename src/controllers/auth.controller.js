@@ -38,15 +38,18 @@ export const UserController={
         const {username,password}=req.body
 
 
-            const user=await User.find({username})
+            const user=await User.findOne({username})
             if(user){
-                res.json(username,password,user)
+                //res.json(user)
 
+                const userComparePassword=await User.comparePassword(password,user.password)
+                return (userComparePassword)?res.status(200).json(user.roles):res.status(404).json(`password is incorrect`)
+
+            }else{
+                res.status(404).json(`user not found with username: ${username}`)
             }
 
 
-            //const userComparePassword=await User.comparePassword(user.password,password)
-            //return (userComparePassword)?res.status(200).json(user.roles):res.status(404).json(`password is incorrect`)
 
 
 
