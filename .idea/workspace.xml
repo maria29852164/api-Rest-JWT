@@ -11,9 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8586ead7-9d7e-48ba-9622-1dac608ed681" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controllers/user.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middlewares/verifiedSinup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middlewares/authToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/authToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/auth.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/products.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/products.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +67,8 @@
       <workItem from="1600009173250" duration="5290000" />
       <workItem from="1600015787277" duration="74000" />
       <workItem from="1600025324068" duration="1657000" />
-      <workItem from="1600035529142" duration="3038000" />
+      <workItem from="1600035529142" duration="3076000" />
+      <workItem from="1600050932079" duration="7204000" />
     </task>
     <servers />
   </component>
@@ -102,7 +110,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/routes/products.route.js</url>
-          <line>5</line>
+          <line>6</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

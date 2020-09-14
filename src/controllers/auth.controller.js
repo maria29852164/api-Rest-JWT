@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import secret from '../config'
 
 import Role from '../models/role.model'
-export const UserController={
+export const AuthController={
     verifiedRole:async (roles)=>{
         if(roles){
             const rolesFound=await Role.find({name:{$in:roles}})
@@ -23,7 +23,7 @@ export const UserController={
     singUp:async (req,res)=>{
         const {username,email,password,roles} = req.body
 
-       const rolesVerified= await UserController.verifiedRole(roles)
+        const rolesVerified= await AuthController.verifiedRole(roles)
         const user=new User({username,email,password:await User.encriptyPassword(password),
             roles:rolesVerified
         })
@@ -41,10 +41,10 @@ export const UserController={
             if(user){
 
                 const userComparePassword=await User.comparePassword(password,user.password)
-                const token=await UserController.generateToken(user)
+                const token=await AuthController.generateToken(user)
 
-               // const rolesUser=user.roles.map(role=>role.name)
-                return (userComparePassword)?res.status(200).json(token):res.status(404).json(`password is incorrect`)
+               const rolesUser=user.roles.map(role=>role.name)
+                return (userComparePassword)?res.status(200).json({token,roles:rolesUser}):res.status(404).json(`password is incorrect`)
 
             }else{
                 res.status(404).json(`user not found with username: ${username}`)
